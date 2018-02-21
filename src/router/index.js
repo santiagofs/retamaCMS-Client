@@ -1,15 +1,52 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+
+import Auth from '@/components/Auth'
+
+import { store } from '@/store'
+import userRoutes from '@/components/modules/user/routes'
+// import Catalog from '@/components/modules/Catalog'
+// import testsRoutes from '@/components/modules/tests/routes'
 
 Vue.use(Router)
 
-export default new Router({
+var router = new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }
+      component: Auth,
+      children: [
+        // {
+        //   path: 'catalog',
+        //   name: 'Catalog',
+        //   component: Catalog,
+        //   children: [
+        //     ...testsRoutes
+        //   ]
+        // },
+        // {
+        //   path: '/',
+        //   name: 'Hello',
+        //   component: HelloWorld
+        // },
+        // {
+        //   path: '/other',
+        //   name: 'Other',
+        //   component: Other
+        // }
+      ]
+    },
+    ...userRoutes
   ]
 })
+var unauthenticatedPages = ['SignIn']
+
+router.beforeEach((to, from, next) => {
+  if (unauthenticatedPages.indexOf(to.name) !== -1) return next()
+  if (!store.state.user.logged) return next({ path: '/signin' })
+  next()
+})
+
+
+
+export default router

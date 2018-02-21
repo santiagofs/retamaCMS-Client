@@ -6,6 +6,9 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+require('./assets/scss/main.scss')
+
+console.log(process.env.API_URL)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

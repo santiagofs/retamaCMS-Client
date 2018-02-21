@@ -1,0 +1,25 @@
+@import "_settings.scss";
+@import "~bulma/bulma";
+
+
+$fa-font-path: "../font-awesome/fonts" !default;
+@import "../font-awesome/scss/font-awesome";
+
+
+html {
+  font-size: 10px;
+}
+body {
+  margin: 0;
+
+}
+
+body, button, input, select, textarea, a {
+  font-family: $font-family;
+  font-size: $font-size;
+
+  &:focus {
+    border: inherit;
+    outline: none;
+  }
+}
