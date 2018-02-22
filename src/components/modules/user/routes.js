@@ -1,8 +1,8 @@
-import SignIn from './Signin'
+import SignIn from './sign-in'
 
 export default [
   {
-    path: '/signin',
+    path: '/sign-in',
     name: 'SignIn',
     component: SignIn
   }

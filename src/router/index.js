@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Auth from '@/components/Auth'
+import Auth from '@/components/auth'
 
 import { store } from '@/store'
 import userRoutes from '@/components/modules/user/routes'
@@ -43,7 +43,7 @@ var unauthenticatedPages = ['SignIn']
 
 router.beforeEach((to, from, next) => {
   if (unauthenticatedPages.indexOf(to.name) !== -1) return next()
-  if (!store.state.user.logged) return next({ path: '/signin' })
+  if (!store.state.user.logged) return next({ path: '/sign-in' })
   next()
 })
 
