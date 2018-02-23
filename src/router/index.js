@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 import Auth from '@/components/auth'
 
-import { store } from '@/store'
+import store from '@/store'
 import userRoutes from '@/components/modules/user/routes'
 // import Catalog from '@/components/modules/Catalog'
 // import testsRoutes from '@/components/modules/tests/routes'

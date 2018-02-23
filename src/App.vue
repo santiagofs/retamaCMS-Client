@@ -12,8 +12,7 @@ export default {
 
 <style lang="scss">
 #app {
-  @import "./assets/scss/_settings";
-  font-family: $font-family;
+  // @import "./assets/scss/_settings";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

@@ -1,12 +1,29 @@
 <template>
-  <div id="signin-wrapper">
+  <div id="signin-wrapper" class="box">
     <div id="signin-form">
-      <h1>Sign In</h1>
-      <fieldset>
-        <input type="text"  v-model="username" />
-        <input type="password" v-model="password" />
-        <button class="btn btn-primary" @click="doSignIn()">Sign In</button>
-      </fieldset>
+      <h1 class="title">Sign In</h1>
+      <div class="form">
+
+        <div class="field">
+          <label class="label">Username/email</label>
+          <div class="control">
+            <input type="text" class="input" placeholder="username/email"  v-model="username" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control">
+            <input type="password" class="input" placeholder="password"  v-model="password" />
+          </div>
+        </div>
+
+        <div class="field is-grouped is-grouped-right">
+          <div class="control">
+            <button class="sign-in is-link button" @click="doSignIn()">Sign In</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -14,19 +31,19 @@
 
 <script>
 // import { mapActions } from 'vuex'
-import { store } from '@/store'
+// import { store } from '@/store'
 
 export default {
   name: 'SignIn',
   data () {
     return {
-      username: '',
-      password: ''
+      username: 'santiagofs@gmail.com',
+      password: 'a'
     }
   },
   methods: {
     doSignIn: function () {
-      store.dispatch('user/doSignIn', {
+      this.$store.dispatch('user/doSignIn', {
         username: this.username,
         password: this.password,
         router: this.$router
@@ -39,4 +56,17 @@ export default {
 <style lang="scss">
 @import "../../../assets/scss/_settings";
 
+#signin-wrapper {
+  width: 400px;
+  padding: $gap;
+  margin: 50px auto;
+  background: $turquoise;
+  color: #FFF;
+}
+
+#signin-form {
+  .label, .title {
+    color: white;
+  }
+}
 </style>
