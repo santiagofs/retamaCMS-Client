@@ -10,16 +10,12 @@ const getters = {
 }
 
 const mutations = {
-  onSignIn (state, payload) {
+  setUser (state, payload) {
     state.logged = true
     state.user = {
       name: 'Santiago',
       roleId: 1
     }
-    var history = payload.router.history
-    if (history.pending) return payload.router.push(history.pending.fullPath)
-
-    return payload.router.push('/')
   }
 }
 
@@ -35,13 +31,26 @@ const actions = {
         var token = jws.decode(res.token);
         token.test = 1;
         localStorage.setItem('token', res.token)
-        commit('onSignIn', {
+        commit('setUser', {
           name: 'Santiago',
-          roleId: 1,
-          router: payload.router
+          roleId: 1
         });
+        var history = payload.router.history
+        if (history.pending) return payload.router.push(history.pending.fullPath)
+
+        return payload.router.push('/')
       })
       .catch(error => console.log(error))
+  },
+  restoreUser ({commit}, payload) {
+    const token = localStorage.getItem('token');
+    if (!token) return
+
+    commit('setUser', {
+      name: 'Santiago',
+      roleId: 1
+    });
+    return true;
   },
   getX ({commit}, payload) {
     AuthHTTP.post()

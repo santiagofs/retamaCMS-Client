@@ -42,11 +42,12 @@ var router = new Router({
 var unauthenticatedPages = ['SignIn']
 
 router.beforeEach((to, from, next) => {
+  // check we have a user
+  store.dispatch('user/restoreUser')
   if (unauthenticatedPages.indexOf(to.name) !== -1) return next()
   if (!store.state.user.logged) return next({ path: '/sign-in' })
   next()
 })
-
 
 
 export default router

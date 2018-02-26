@@ -5,8 +5,13 @@
 </template>
 
 <script>
+
 export default {
-  name: 'app'
+  name: 'app',
+  beforeCreate () {
+    this.$store.dispatch('settings/getSettings')
+    console.log('app before create')
+  }
 }
 </script>
 

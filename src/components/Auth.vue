@@ -2,7 +2,7 @@
   <div id="site-wrapper" :class="{'sidebar-collapsed': sidebarCollapsed}">
     <header id="site-header" class="level">
       <div class="level-left">
-        
+
       </div>
       <div class="level-right">
         <button class="button navbar-burger" @click="toggleSidebar()">
